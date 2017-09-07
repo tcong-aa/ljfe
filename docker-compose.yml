@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    build: .
+    container_name: server
+    volumes:
+        - .:/code
+    command: python manage.py runserver -h 0.0.0.0 -p 5000
+    ports:
+        - "5000:5000"
