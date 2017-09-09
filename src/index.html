@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./index.css">
+<style>
+	.color_up {
+		color: #E44F47;
+	}
+	.color_down {
+		color: #3BBA97;
+	}
+	.pricedown, .priceup {
+		position: relative;
+		margin: 0 30px 0 0;
+	}
+	.pricedown:after {
+		display: inline;
+		content: '';
+		position: absolute;
+		top: 13px;
+	    right: -24px;
+	    width: 0;
+	    height: 0;
+	    border-top: 16px solid #3BBA97;
+	    border-left: 8px solid transparent;
+	    border-right: 8px solid transparent;
+	}
+	.priceup:after {
+		display: inline;
+		content: '';
+		position: absolute;
+		top: 12px;
+    	right: -24px;
+		width: 0;
+		height: 0;
+		border-bottom: 16px solid #E44F47;
+		border-left: 8px solid transparent;
+	    border-right: 8px solid transparent;
+	}
+</style>
+<style>
+
+    body {
+        background-color: #232323;
+        font: 10px sans-serif;
+        color: #404255;
+        text-align: center;
+        padding: 30px 0;
+    }
+
+    svg {
+    }
+
+	/* k线颜色 */
+    path.candle {
+        stroke: #fff;
+    }
+
+    path.candle.body {
+        stroke-width: 0;
+        fill: #fff;
+    }
+
+    path.candle.up {
+        fill: #3BBA97;
+        stroke: #3BBA97;
+    }
+
+    path.candle.down {
+        fill: #E44F47;
+        stroke: #E44F47;
+    }
+
+    /* 四边提示标签 */
+	.x.annotation.top path {
+        fill: #5C40D0;
+    }
+
+    .x.annotation.bottom path {
+        fill: #F6A348;
+    }
+
+    .y.annotation.left path {
+        fill: #3BBA97;
+    }
+
+    .y.annotation.right path {
+        fill: #E44F47;
+    }
+
+    /* 公司信息 */
+    .company_name {
+    	fill: #CCCCCC;
+    }
+
+	/* 当前坐标线(鼠标位置的十字线) */
+    .crosshair {
+        cursor: crosshair;
+    }
+
+    .crosshair path.wire {
+        stroke: #9E9E9E;
+        stroke-dasharray: 6, 3;
+    }
+
+    .crosshair .axisannotation path {
+    	/* 当前坐标线提示标签 */
+        fill: #CECECE;
+    }
+
+    .coords {
+    	fill: #F9BB2D;
+    }
+
+	/* 四边边线和文字 */
+    .x.axis text {
+		fill: #68717E;
+    }
+
+    .x.axis path, line {
+		stroke: #68717E;
+    }
+
+    .y.axis text {
+		fill: #68717E;
+    }
+
+    .y.axis path, line {
+		stroke: #68717E;
+    }
+
+</style>
+<body>
+
+	<header>
+		<h1>title</h1>
+	</header>
+
+	<section id="section_main">
+		<div id="main_chart"></div>
+	</section>
+	
+	<div id="empty"></div>
+
+	<aside>
+		<div>
+			<h2>望海风情海岸</h2>
+			<span class="message_code">000073</span>
+		</div>
+		<div class="message_price">
+			<span class="message_price_1 color_up priceup">8800.73</span>
+			<span class="message_price_2 color_up">+ 13.31%</span>
+			<span class="message_price_1"></span>
+		</div>
+		<div id="message_main">
+			<span class="message_main_1">环翠区</span>
+			<span class="message_main_1">2012年</span>
+			<span class="message_main_1">6600户</span>
+		</div>
+		<div class="message_chengjiao">
+			<table id="message_chengjiao_set">
+				<thead>
+					<tr class="message_chengjiao_card">
+						<th class="message_chengjiao_card_1" width="25%">均价</th>
+						<th class="message_chengjiao_card_2" width="20%">面积</th>
+						<th class="message_chengjiao_card_2" width="20%">总价</th>
+						<th class="message_chengjiao_card_2">成交时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="message_chengjiao_card">
+						<td class="message_chengjiao_card_1 color_down" width="25%">8600.00元</td>
+						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+						<td class="message_chengjiao_card_2">2013-03-01</td>
+					</tr>
+					<tr class="message_chengjiao_card">
+						<td class="message_chengjiao_card_1 color_up" width="25%">8900.80元</td>
+						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+						<td class="message_chengjiao_card_2">2013-03-01</td>
+					</tr>
+					<tr class="message_chengjiao_card">
+						<td class="message_chengjiao_card_1 color_up" width="25%">7900.80元</td>
+						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+						<td class="message_chengjiao_card_2">2013-03-01</td>
+					</tr>
+					<tr class="message_chengjiao_card">
+						<td class="message_chengjiao_card_1 color_down" width="25%">7600.80元</td>
+						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+						<td class="message_chengjiao_card_2">2013-03-01</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- <div class="message_chengjiao_card">
+				<span class="message_chengjiao_card_1">均价</span>
+				<span class="message_chengjiao_card_2" width="10%">面积</span>
+				<span class="message_chengjiao_card_2" width="10%">总价</span>
+				<span class="message_chengjiao_card_2" width="15%">成交时间</span>
+			</div>
+			<div class="message_chengjiao_card">
+				<span class="message_chengjiao_card_1" width="15%">8900.80元</span>
+				<span class="message_chengjiao_card_2" width="10%">140m<sub>2</sub></span>
+				<span class="message_chengjiao_card_2" width="10%">124.6万</span>
+				<span class="message_chengjiao_card_2" width="15%">2013-03-01</span>
+			</div> -->
+		</div>
+	</aside>
+
+
+
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script src="http://techanjs.org/techan.min.js"></script>
+<script>
+
+    var margin = {top: 20, right: 50, bottom: 30, left: 50},
+            width = 960 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+    var parseDate = d3.timeParse("%d-%b-%y");
+
+    var x = techan.scale.financetime()
+            .range([0, width]);
+
+    var y = d3.scaleLinear()
+            .range([height, 0]);
+
+    var candlestick = techan.plot.candlestick()
+            .xScale(x)
+            .yScale(y);
+
+    var xAxis = d3.axisBottom(x);
+
+    var xTopAxis = d3.axisTop(x);
+
+    var yAxis = d3.axisLeft(y);
+
+    var yRightAxis = d3.axisRight(y);
+
+    var ohlcAnnotation = techan.plot.axisannotation()
+            .axis(yAxis)
+            .orient('left')
+            .format(d3.format(',.2f'));
+
+    var ohlcRightAnnotation = techan.plot.axisannotation()
+            .axis(yRightAxis)
+            .orient('right')
+            .translate([width, 0]);
+
+    var timeAnnotation = techan.plot.axisannotation()
+            .axis(xAxis)
+            .orient('bottom')
+            .format(d3.timeFormat('%Y-%m-%d'))
+            .width(65)
+            .translate([0, height]);
+
+    var timeTopAnnotation = techan.plot.axisannotation()
+            .axis(xTopAxis)
+            .orient('top');
+
+    var crosshair = techan.plot.crosshair()
+            .xScale(x)
+            .yScale(y)
+            .xAnnotation([timeAnnotation, timeTopAnnotation])
+            .yAnnotation([ohlcAnnotation, ohlcRightAnnotation])
+            .on("enter", enter)
+            .on("out", out)
+            .on("move", move);
+
+    var svg = d3.select("#main_chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var coordsText = svg.append('text')
+            .style("text-anchor", "end")
+            .attr("class", "coords")
+            .attr("x", width - 5)
+            .attr("y", 15);
+
+    d3.csv("data.csv", function(error, data) {
+        var accessor = candlestick.accessor();
+
+        data = data.slice(0, 200).map(function(d) {
+            return {
+                date: parseDate(d.Date),
+                open: +d.Open,
+                high: +d.High,
+                low: +d.Low,
+                close: +d.Close,
+                volume: +d.Volume
+            };
+        }).sort(function(a, b) { return d3.ascending(accessor.d(a), accessor.d(b)); });
+
+        x.domain(data.map(accessor.d));
+        y.domain(techan.scale.plot.ohlc(data, accessor).domain());
+
+        svg.append("g")
+                .datum(data)
+                .attr("class", "candlestick")
+                .call(candlestick);
+
+        svg.append("g")
+                .attr("class", "x axis")
+                .call(xTopAxis);
+
+        svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+        svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
+
+        svg.append("g")
+                .attr("class", "y axis")
+                .attr("transform", "translate(" + width + ",0)")
+                .call(yRightAxis);
+
+        svg.append("g")
+                .attr("class", "y annotation left")
+                .datum([{value: 74}, {value: 67.5}, {value: 58}, {value:40}]) // 74 should not be rendered
+                .call(ohlcAnnotation);
+
+        svg.append("g")
+                .attr("class", "x annotation bottom")
+                .datum([{value: x.domain()[30]}])
+                .call(timeAnnotation);
+
+        svg.append("g")
+                .attr("class", "y annotation right")
+                .datum([{value: 61}, {value:52}])
+                .call(ohlcRightAnnotation);
+
+        svg.append("g")
+                .attr("class", "x annotation top")
+                .datum([{value: x.domain()[80]}])
+                .call(timeTopAnnotation);
+
+        svg.append('g')
+                .attr("class", "crosshair")
+                .datum({ x: x.domain()[80], y: 67.5 })
+                .call(crosshair)
+                .each(function(d) { move(d); }); // Display the current data
+
+        svg.append('text')
+        		.attr("class", "company_name")
+                .attr("x", 5)
+                .attr("y", 15)
+                .text("Facebook, Inc. (FB)");
+    });
+
+    function enter() {
+        coordsText.style("display", "inline");
+    }
+
+    function out() {
+        coordsText.style("display", "none");
+    }
+
+    function move(coords) {
+        coordsText.text(
+            timeAnnotation.format()(coords.x) + ", " + ohlcAnnotation.format()(coords.y)
+        );
+    }
+
+</script>

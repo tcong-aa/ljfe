@@ -1,0 +1,105 @@
+header {
+	text-align: left;
+	height: 40px;
+	padding: 0 0 20px 0;
+	margin: 0 0 60px 0;
+	border-bottom: 1px solid #AAAAAA;
+}
+header:before {
+	display: inline-block;
+	content: ' ';
+	width: 10px;
+	height: 40px;
+	background: #8F8F8F;
+}
+header h1 {
+	display: inline-block;
+	margin: 0 15px;
+	vertical-align: top;
+	line-height: 40px;
+	font-size: 30px;
+	color: #DDDDDD;
+}
+#section_main {
+	float: left;
+	box-sizing: border-box;
+	width: 70%;
+	padding: 0 0 0 70px;
+}
+#main_chart {
+	margin: 0, auto;
+}
+aside {
+	float: right;
+	box-sizing: border-box;
+	width: 20%;
+	min-width: 350px;
+	text-align: left;
+}
+
+aside h2 {
+	display: inline-block;
+	font-size: 40px;
+	color: #DFDFDF;
+	margin: 0;
+}
+.message_code {
+	margin: 0 0 0 10px;
+	font-size: 22px;
+	color: #9F9F9F;
+}
+.message_price_1 {
+	font-size: 30px;
+	color: #E44F47;
+}
+.message_price_2 {
+	margin: 0 0 0 10px;
+	font-size: 18px;
+	vertical-align: super;
+}
+
+#message_chengjiao_set {
+	width: 100%;
+	margin: 10px auto 0 auto;
+	border-collapse: collapse;
+}
+
+.message_chengjiao_card {
+	height: 30px;
+	line-height: 30px;
+/*	width: 95%;
+*/	min-width: 270px;
+	padding: 0 10px;
+	border-radius: 4px;
+	font-size: 14px;
+	background-color: #2B2B2B;
+	/*border-spacing: 0px;*/
+}
+.message_chengjiao_card_1 {
+	border-top: 3px solid #232323;
+	text-align: center;
+	color: #F3F3F3;
+}
+.message_chengjiao_card_2 {
+	border-top: 2px solid #232323;
+	text-align: center;
+	color: #C0C0C0;
+}
+
+
+aside #message_main {
+	padding: 0 0 15px 0;
+	border-bottom: 1px solid #9F9F9F;
+	font-size: 20px;
+	color: #9F9F9F;
+}
+
+.message_main_1 {
+	margin: 0 8px 0 0;
+}
+
+#empty {
+	float: right;
+	width: 10%;
+	height: 1px;
+}
