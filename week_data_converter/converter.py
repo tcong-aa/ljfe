@@ -35,7 +35,7 @@ def get_sunday(curr_date):
 
 
 def construct_sunday_values():
-    house_meta_coll = db.session.query().order_by(desc(HouseMeta.deal_time)).all()
+    house_meta_coll = db.session.query(HouseMeta).order_by(desc(HouseMeta.deal_time)).all()
 
     total_deals = dict()
 
