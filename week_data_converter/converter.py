@@ -30,7 +30,7 @@ class HouseMeta(db.Model):
 
 
 def get_sunday(curr_date):
-    curr_date = datetime.strptime('%Y.%m.%d', curr_date)
+    curr_date = datetime.strptime(curr_date, '%Y.%m.%d')
     start = curr_date - timedelta(days=(curr_date.weekday() + 1) % 7)
     return start + timedelta(days=7)
 
