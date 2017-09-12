@@ -80,6 +80,7 @@ def save_to_db():
 
             prices = map(lambda house_meta: float(house_meta.unit_price), house_metas)
             price = WeekPrice(
+                date=date,
                 name=name,
                 community_code=community_id,
                 open=prices[0],
