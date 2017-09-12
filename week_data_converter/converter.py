@@ -19,13 +19,14 @@ class WeekPrice(db.Model):
     volumn = db.Column(db.BigInteger)
 
     def __repr__(self):
-        return "date: {}, community: {}, open: {}, close: {}, high: {}, low: {}".format(
+        return "date: {}, community: {}, open: {}, close: {}, high: {}, low: {}, volumn: {}".format(
             self.date,
             self.community_code,
             self.open,
             self.close,
             self.high,
-            self.low
+            self.low,
+            self.volumn
         )
 
 class HouseMeta(db.Model):
