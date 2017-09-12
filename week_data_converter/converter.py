@@ -98,14 +98,7 @@ def save_to_db():
             )
 
             print price
-    # for sunday, deals in total_values.items():
-    #     print sunday, deals
-    #
-    #     # prices = map(lambda deal: deal.)
-    #
-    #     WeekPrice(
-    #         date=sunday,
-    #
-    #     )
 
+            db.session.add(price)
 
+    db.session.commit()
