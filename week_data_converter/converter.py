@@ -47,7 +47,7 @@ def construct_sunday_values():
 
         for house_meta in house_metas:
             print house_meta.community_id
-            print house_meta.name
+            print house_meta.community_name
 
         # total_deals.setdefault(community_id, {
         #     'community_id': community_id,
