@@ -41,15 +41,18 @@ def construct_sunday_values():
     house_meta_coll = db.session.query(HouseMeta).filter(HouseMeta.deal_time!="").order_by(desc(HouseMeta.deal_time)).all()
     total_deals = dict()
 
-    for community_id, house_meta in groupby(house_meta_coll, lambda meta:meta.community_id):
+    for community_id, house_metas in groupby(house_meta_coll, lambda meta:meta.community_id):
 
         print community_id
-        print house_meta
 
-        total_deals.setdefault(community_id, {
-            'community_id': community_id,
-            'community_name': house_meta.community_name
-        })
+        for house_meta in house_metas:
+            print house_meta.community_id
+            print house_meta.name
+
+        # total_deals.setdefault(community_id, {
+        #     'community_id': community_id,
+        #     'community_name': house_meta.community_name
+        # })
 
 
         #
