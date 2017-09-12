@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from extensions import db
 from sqlalchemy import desc
+from itertools import groupby
 
 
 class WeekPrice(db.Model):
@@ -22,6 +23,7 @@ class HouseMeta(db.Model):
 
     house_code = db.Column(db.Text, primary_key=True)
 
+    community_name = db.Column(db.Text)
     community_id = db.Column(db.Text)
     area = db.Column(db.Text)
     unit_price = db.Column(db.Text)
@@ -36,18 +38,29 @@ def get_sunday(curr_date):
 
 
 def construct_sunday_values():
-    house_meta_coll = db.session.query(HouseMeta).order_by(desc(HouseMeta.deal_time)).all()
-
+    house_meta_coll = db.session.query(HouseMeta).filter(~HouseMeta.deal_time=="").order_by(desc(HouseMeta.deal_time)).all()
     total_deals = dict()
 
-    for house_meta in house_meta_coll:
-        if house_meta.deal_time:
+    for community_id, house_meta in groupby(house_meta_coll, key=lambda meta: meta['community_id']):
 
-            sunday = get_sunday(house_meta.deal_time)
-            date_str = sunday.strftime('%Y-%m-%d')
-            total_deals.setdefault(date_str, [])
+        total_deals.setdefault(community_id, {
+            'community_id': community_id,
+            'community_name': house_meta.community_name
+        })
 
-            total_deals[date_str].append(house_meta)
+
+        #
+        # for house_meta in house_meta_coll:
+        #     if house_meta.deal_time:
+        #
+        #         sunday = get_sunday(house_meta.deal_time)
+        #         date_str = sunday.strftime('%Y-%m-%d')
+        #
+        #         total_deals.setdefault()
+        #
+        #         total_deals.setdefault(date_str, [])
+        #
+        #         total_deals[date_str].append(house_meta)
 
     return total_deals
 
@@ -56,7 +69,16 @@ def save_to_db():
 
     total_values = construct_sunday_values()
 
-    for sunday, deals in total_values.items():
-        print sunday, deals
+    print total_values
+
+    # for sunday, deals in total_values.items():
+    #     print sunday, deals
+    #
+    #     # prices = map(lambda deal: deal.)
+    #
+    #     WeekPrice(
+    #         date=sunday,
+    #
+    #     )
 
 
