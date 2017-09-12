@@ -43,6 +43,9 @@ def construct_sunday_values():
 
     for community_id, house_meta in groupby(house_meta_coll, lambda meta:meta.community_id):
 
+        print community_id
+        print house_meta
+
         total_deals.setdefault(community_id, {
             'community_id': community_id,
             'community_name': house_meta.community_name
