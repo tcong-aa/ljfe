@@ -18,9 +18,10 @@ class WeekPrice(db.Model):
     low = db.Column(db.Float)
 
     def __repr__(self):
-        return "date: {}, community: {}, open: {}, close: {}, high: {}, low: {}".format(
+        return "date: {}, community: {}, name: {}, open: {}, close: {}, high: {}, low: {}".format(
             self.date,
             self.community_code,
+            self.name,
             self.open,
             self.close,
             self.high,
