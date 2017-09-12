@@ -1,14 +1,17 @@
 from datetime import datetime, timedelta
 from extensions import db
-from sqlalchemy import desc
+from sqlalchemy import desc, UniqueConstraint
 from itertools import groupby
 
 
 class WeekPrice(db.Model):
     __tablename__ = 'hommy_week_price'
 
-    date = db.Column(db.Date, primary_key=True)
+    __table_args__ = (
+        UniqueConstraint("date", "community_code"),
+    )
 
+    date = db.Column(db.Date, index=True)
     community_code = db.Column(db.Text, index=True)
     name = db.Column(db.Text, index=True)
 
