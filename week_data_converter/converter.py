@@ -53,8 +53,8 @@ def construct_sunday_values():
             sunday = get_sunday(house_meta.deal_time)
             date_str = sunday.strftime('%Y-%m-%d')
 
-            total_deals['deals'].setdefault(date_str, [])
-            total_deals['deals'][date_str].append(house_meta.price)
+            total_deals[community_id]['deals'].setdefault(date_str, [])
+            total_deals[community_id]['deals'][date_str].append(house_meta.price)
 
     return total_deals
 
