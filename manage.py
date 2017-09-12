@@ -15,5 +15,11 @@ def generate_week_values():
     from week_data_converter.converter import save_to_db
     save_to_db()
 
+@manager.command
+def create_tables():
+    from week_data_converter.converter import WeekPrice
+    WeekPrice.__table__.create(app.db.session.bind)
+
+
 if __name__ == '__main__':
     manager.run()
