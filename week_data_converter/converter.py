@@ -20,6 +20,8 @@ class HouseMeta(db.Model):
 
     __tablename__ = 'house_meta'
 
+    house_code = db.Column(db.Text, primary_key=True)
+
     community_id = db.Column(db.Text)
     area = db.Column(db.Float)
     unit_price = db.Column(db.Float)
