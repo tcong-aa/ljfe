@@ -11,6 +11,8 @@ class WeekPrice(db.Model):
         UniqueConstraint("date", "community_code"),
     )
 
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
     date = db.Column(db.Date, index=True)
     community_code = db.Column(db.Text, index=True)
     name = db.Column(db.Text, index=True)
