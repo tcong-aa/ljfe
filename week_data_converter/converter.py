@@ -17,6 +17,16 @@ class WeekPrice(db.Model):
     high = db.Column(db.Float)
     low = db.Column(db.Float)
 
+    def __repr__(self):
+        return "date: {}, community: {}, open: {}, close: {}, high: {}, low: {}".format(
+            self.date,
+            self.community_code,
+            self.open,
+            self.close,
+            self.high,
+            self.low
+        )
+
 class HouseMeta(db.Model):
 
     __tablename__ = 'house_meta'
@@ -54,7 +64,7 @@ def construct_sunday_values():
             date_str = sunday.strftime('%Y-%m-%d')
 
             total_deals[community_id]['deals'].setdefault(date_str, [])
-            total_deals[community_id]['deals'][date_str].append(house_meta.price)
+            total_deals[community_id]['deals'][date_str].append(house_meta)
 
     return total_deals
 
@@ -63,8 +73,23 @@ def save_to_db():
 
     total_values = construct_sunday_values()
 
-    print total_values
+    for community_id, community_info in total_values:
+        name = community_info['community_name']
 
+        for date, house_metas in community_info['deals'].items():
+
+            prices = map(lambda house_meta: float(house_meta.unit_price), house_metas)
+            price = WeekPrice(
+                name=name,
+                community_code=community_id,
+                open=prices[0],
+                close=prices[-1],
+                high=max(prices),
+                low=min(prices)
+            )
+
+
+            print price
     # for sunday, deals in total_values.items():
     #     print sunday, deals
     #
