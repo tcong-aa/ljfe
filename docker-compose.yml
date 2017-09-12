@@ -6,5 +6,7 @@ services:
     volumes:
         - .:/code
     command: python manage.py runserver -h 0.0.0.0 -p 8080
+    networks:
+        - redash_default
     ports:
         - "8080:8080"
