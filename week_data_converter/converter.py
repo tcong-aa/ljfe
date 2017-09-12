@@ -94,7 +94,7 @@ def save_to_db():
                 close=prices[-1],
                 high=max(prices),
                 low=min(prices),
-                volumn=sum(prices)
+                volumn=len(prices)
             )
 
             print price
