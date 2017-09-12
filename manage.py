@@ -10,5 +10,10 @@ def make_shell_context():
 
 manager.add_command("shell", Shell(make_context=make_shell_context))
 
+@manager.add_command('generate_week_values')
+def generate_week_values():
+    from week_data_converter.converter import save_to_db
+    save_to_db()
+
 if __name__ == '__main__':
     manager.run()

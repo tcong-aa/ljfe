@@ -1,16 +1,17 @@
 from flask import Flask, jsonify, make_response
 
+from extensions import db
+
 import logging
 logger = logging.getLogger(__name__)
 
 def create_app():
-
     app = Flask(__name__)
     # app.config.from_object(settings)
     app.config.from_object('config')
 
-    # db.init_app(app)
-    # app.db = db
+    db.init_app(app)
+    app.db = db
 
     register_blueprints(app)
     # register_extensions(app)
