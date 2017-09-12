@@ -16,12 +16,12 @@ class WeekPrice(db.Model):
     close = db.Column(db.Float)
     high = db.Column(db.Float)
     low = db.Column(db.Float)
+    volumn = db.Column(db.BigInteger)
 
     def __repr__(self):
-        return "date: {}, community: {}, name: {}, open: {}, close: {}, high: {}, low: {}".format(
+        return "date: {}, community: {}, open: {}, close: {}, high: {}, low: {}".format(
             self.date,
             self.community_code,
-            self.name,
             self.open,
             self.close,
             self.high,
@@ -87,9 +87,9 @@ def save_to_db():
                 open=prices[0],
                 close=prices[-1],
                 high=max(prices),
-                low=min(prices)
+                low=min(prices),
+                volumn=sum(prices)
             )
-
 
             print price
     # for sunday, deals in total_values.items():
