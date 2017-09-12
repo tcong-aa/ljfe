@@ -73,7 +73,7 @@ def save_to_db():
 
     total_values = construct_sunday_values()
 
-    for community_id, community_info in total_values:
+    for community_id, community_info in total_values.items():
         name = community_info['community_name']
 
         for date, house_metas in community_info['deals'].items():
