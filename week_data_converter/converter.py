@@ -23,10 +23,10 @@ class HouseMeta(db.Model):
     house_code = db.Column(db.Text, primary_key=True)
 
     community_id = db.Column(db.Text)
-    area = db.Column(db.Float)
-    unit_price = db.Column(db.Float)
-    price = db.Column(db.Float)
-    deal_time = db.Column(db.Date)
+    area = db.Column(db.Text)
+    unit_price = db.Column(db.Text)
+    price = db.Column(db.Text)
+    deal_time = db.Column(db.Text)
 
 
 def get_sunday(curr_date):
