@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, make_response
 
+from flask import render_template
+
 from extensions import db
 
 import logging
@@ -24,7 +26,7 @@ def create_app():
 def register_blueprints(app):
     @app.route('/')
     def index():
-        return jsonify({'successed': True})
+        return render_template('index.html', title='Hommy Candle Stick')
 
     @app.errorhandler(404)
     def not_found(error):
