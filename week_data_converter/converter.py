@@ -76,7 +76,7 @@ def get_sunday(curr_date):
 
 def get_month_end_day(curr_date):
     curr_date = datetime.strptime(curr_date, '%Y.%m.%d')
-    day = calendar.monthrange(curr_date.year, curr_date.month)
+    day = calendar.monthrange(curr_date.year, curr_date.month)[1]
 
     date = "{}-{}-{}".format(curr_date.year, curr_date.month, day)
     return date
