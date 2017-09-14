@@ -146,10 +146,10 @@ def save_to_db_month():
             })
 
             month_end = get_month_end_day(house_meta.deal_time)
-            date_str = month_end.strftime('%Y-%m-%d')
+            # date_str = month_end.strftime('%Y-%m-%d')
 
-            total_deals[community_id]['deals'].setdefault(date_str, [])
-            total_deals[community_id]['deals'][date_str].append(house_meta)
+            total_deals[community_id]['deals'].setdefault(month_end, [])
+            total_deals[community_id]['deals'][month_end].append(house_meta)
 
 
     for community_id, community_info in total_deals.items():
