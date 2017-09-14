@@ -12,8 +12,8 @@ manager.add_command("shell", Shell(make_context=make_shell_context))
 
 @manager.command
 def generate_week_values():
-    from week_data_converter.converter import save_to_db
-    save_to_db()
+    from week_data_converter.converter import save_to_db_month
+    save_to_db_month()
 
 @manager.command
 def create_tables():
