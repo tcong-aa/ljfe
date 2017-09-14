@@ -169,9 +169,9 @@ def save_to_db_month():
                 volumn=len(prices)
             )
 
-            print price
+            # print price
 
-            # db.session.add(price)
+            db.session.add(price)
 
-    # db.session.commit()
+    db.session.commit()
 

@@ -17,8 +17,9 @@ def generate_week_values():
 
 @manager.command
 def create_tables():
-    from week_data_converter.converter import WeekPrice
-    WeekPrice.__table__.create(app.db.session.bind)
+    from week_data_converter.converter import WeekPrice, MonthPrice
+    # WeekPrice.__table__.create(app.db.session.bind)
+    MonthPrice.__table__.create(app.db.session.bind)
 
 
 if __name__ == '__main__':
