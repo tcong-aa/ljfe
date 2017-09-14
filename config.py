@@ -5,7 +5,7 @@ db_user = 'postgres'
 db_pass = 'postgres'
 db_host = 'postgres'
 db_port = 5432
-db_name = 'postgres'
+db_name = 'hommy'
 
 SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(
     db_user, db_pass, db_host, db_port, db_name
