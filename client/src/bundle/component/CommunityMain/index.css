@@ -1,0 +1,99 @@
+aside {
+	float: right;
+	box-sizing: border-box;
+	width: 20%;
+	min-width: 350px;
+	text-align: left;
+}
+aside h2 {
+	display: inline-block;
+	font-size: 40px;
+	color: #DFDFDF;
+	margin: 0;
+}
+.message_code {
+	margin: 0 0 0 10px;
+	font-size: 22px;
+	color: #9F9F9F;
+}
+.message_price_1 {
+	font-size: 30px;
+	color: #E44F47;
+}
+.message_price_2 {
+	margin: 0 0 0 10px;
+	font-size: 18px;
+	vertical-align: super;
+}
+
+#message_chengjiao_set {
+	width: 100%;
+	margin: 10px auto 0 auto;
+	border-collapse: collapse;
+	cursor: default;
+}
+
+.message_chengjiao_card {
+	height: 30px;
+	line-height: 30px;
+	min-width: 270px;
+	padding: 0 10px;
+	border-radius: 4px;
+	font-size: 14px;
+	background-color: #2B2B2B;
+	transition: all 0.2s;
+}
+.message_chengjiao_card:hover {
+	background-color: #3E3E3E;
+}
+.message_chengjiao_card_1 {
+	border-top: 2px solid #232323;
+	text-align: center;
+	color: #F3F3F3;
+}
+.message_chengjiao_card_2 {
+	border-top: 2px solid #232323;
+	text-align: center;
+	color: #C0C0C0;
+}
+
+
+aside #message_main {
+	padding: 0 0 15px 0;
+	border-bottom: 1px solid #9F9F9F;
+	font-size: 20px;
+	color: #9F9F9F;
+}
+
+.message_main_1 {
+	margin: 0 8px 0 0;
+}
+
+.pricedown, .priceup {
+		position: relative;
+		margin: 0 30px 0 0;
+	}
+.pricedown:after {
+	display: inline;
+	content: '';
+	position: absolute;
+	top: 13px;
+	right: -24px;
+	width: 0;
+	height: 0;
+	border-top: 16px solid #3BBA97;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}
+.priceup:after {
+	display: inline;
+	content: '';
+	position: absolute;
+	top: 12px;
+    right: -24px;
+	width: 0;
+	height: 0;
+	border-bottom: 16px solid #E44F47;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}

@@ -1,0 +1,251 @@
+    body {
+        font: 10px sans-serif;
+    }
+
+    text {
+        fill: #848689;
+    }
+
+    /* 公司名 */
+    text.symbol {
+        fill: #BBBBBB;
+    }
+
+    body {
+        background-color: #232323;
+        font: 10px sans-serif;
+        color: #404255;
+        text-align: center;
+        padding: 30px 12px;
+    }
+
+    svg {
+    }
+
+    /* k线颜色 */
+    path.candle {
+        stroke: #fff;
+    }
+
+    path.candle.body {
+        stroke-width: 0;
+        fill: #fff;
+    }
+
+    path.candle.up {
+        fill: #3BBA97;
+        stroke: #3BBA97;
+    }
+
+    path.candle.down {
+        fill: #E44F47;
+        stroke: #E44F47;
+    }
+
+    /* 四边提示标签 */
+    .x.annotation.top path {
+        fill: #5C40D0;
+    }
+
+    .x.annotation.bottom path {
+        fill: #F6A348;
+    }
+
+    .y.annotation.left path {
+        fill: #3BBA97;
+    }
+
+    .y.annotation.right path {
+        fill: #E44F47;
+    }
+
+    /* 公司信息 */
+    .company_name {
+        fill: #CCCCCC;
+    }
+
+    /* 当前坐标线(鼠标位置的十字线) */
+    .crosshair {
+        cursor: crosshair;
+    }
+
+    .crosshair path.wire {
+        stroke: #9E9E9E;
+        stroke-dasharray: 6, 3;
+    }
+
+    .crosshair .axisannotation path {
+        /* 当前坐标线提示标签 */
+        fill: #CECECE;
+    }
+
+    .coords {
+        fill: #F9BB2D;
+    }
+
+    /* 四边边线和文字 */
+    .x.axis text {
+        fill: #848689;
+    }
+
+    .x.axis path, line {
+        stroke: #848689;
+    }
+
+    .y.axis text {
+        fill: #848689;
+    }
+
+    .y.axis path, line {
+        stroke: #848689;
+    }
+
+    path {
+        fill: none;
+        stroke-width: 1;
+        stroke: #848689;
+    }
+
+    .close.annotation.up path {
+        fill: #00AA00;
+    }
+
+    path.volume {
+        fill: #777;
+        stroke: none;
+    }
+
+    .indicator-plot path.line {
+        fill: none;
+        stroke-width: 1;
+    }
+
+    /* ohlc lines */
+    .ma-0 path.line {
+        stroke: #1f77b4;
+    }
+
+    .ma-1 path.line {
+        stroke: #aec7e8;
+    }
+
+    .ma-2 path.line {
+        stroke: #ff7f0e;
+    }
+
+    button {
+        position: absolute;
+        right: 110px;
+        top: 25px;
+    }
+
+    /* 柱状图下面的线条 */
+    path.macd {
+        stroke: #4BDFEE;
+    }
+    path.signal {
+        stroke: #FF9999;
+    }
+
+    path.zero {
+        stroke: #BBBBBB;
+        stroke-dasharray: 0;
+        stroke-opacity: 0.5;
+    }
+
+    path.difference {
+        fill: #BBBBBB;
+        stroke: none;
+        opacity: 0.5;
+    }
+
+    path.rsi {
+        stroke: #4BDFEE;
+    }
+
+    path.overbought, path.oversold {
+        stroke: #FF9999;
+        stroke-dasharray: 5, 5;
+    }
+
+    path.middle, path.zero {
+        stroke: #BBBBBB;
+        stroke-dasharray: 5, 5;
+    }
+
+    .analysis path, .analysis circle {
+        stroke: blue;
+        stroke-width: 0.8;
+    }
+
+    .trendline circle {
+        stroke-width: 0;
+        display: none;
+    }
+
+    .mouseover .trendline path {
+        stroke-width: 1.2;
+    }
+
+    .mouseover .trendline circle {
+        stroke-width: 1;
+        display: inline;
+    }
+
+    .dragging .trendline path, .dragging .trendline circle {
+        stroke: darkblue;
+    }
+
+    .interaction path, .interaction circle {
+        pointer-events: all;
+    }
+
+    .interaction .body {
+        cursor: move;
+    }
+
+    .trendlines .interaction .start, .trendlines .interaction .end {
+        cursor: nwse-resize;
+    }
+
+    .supstance path {
+        stroke-dasharray: 2, 2;
+    }
+
+    .supstances .interaction path {
+        pointer-events: all;
+        cursor: ns-resize;
+    }
+
+    .mouseover .supstance path {
+        stroke-width: 1.5;
+    }
+
+    .dragging .supstance path {
+        stroke: darkblue;
+    }
+
+    .tradearrow path.tradearrow {
+        stroke: none;
+    }
+
+    .tradearrow path.buy {
+        fill: #0000FF;
+    }
+
+    .tradearrow path.sell {
+        fill: #9900FF;
+    }
+
+    .tradearrow path.highlight {
+        fill: none;
+        stroke-width: 2;
+    }
+
+    .tradearrow path.highlight.buy {
+        stroke: #0000FF;
+    }
+
+    .tradearrow path.highlight.sell {
+        stroke: #9900FF;
+    }

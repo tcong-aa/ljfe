@@ -12,11 +12,14 @@ sys.setdefaultencoding('utf-8')
 logger = logging.getLogger(__name__)
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__,
+            static_url_path='',
+            static_folder='static',
+            template_folder='templates')
     # app.config.from_object(settings)
     app.config.from_object('config')
 
-    db.init_app(app)
+    # db.init_app(app)
     app.db = db
 
     register_blueprints(app)
@@ -64,6 +67,17 @@ def register_blueprints(app):
             "build_type": community.build_type,
             "recent_deals": recent_deals
         })
+
+
+    @app.route('/proxy')
+    def proxy():
+
+        import requests
+
+        r = requests.get('http://52.23.237.85:8080/week_prices?code=1111027375142')
+
+        return r.text
+
 
     @app.route('/search')
     def search():
