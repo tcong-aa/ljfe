@@ -1,12 +1,13 @@
 from flask import Flask, jsonify, make_response
-
 from flask import render_template, request
-
 from extensions import db
-
 from week_data_converter.converter import WeekPrice, MonthPrice, CommunityMeta, HouseMeta
-
 import logging
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 logger = logging.getLogger(__name__)
 
 def create_app():
