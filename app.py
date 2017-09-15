@@ -35,9 +35,13 @@ def register_blueprints(app):
     @app.route('/community')
     def community():
         code = request.args.get('code')
+        limit_num = request.args.get('limit')
+        if not limit_num:
+            limit_num = 10
+
         community = db.session.query(CommunityMeta).filter(CommunityMeta.id==code).first()
 
-        deals = db.session.query(HouseMeta).filter(HouseMeta.community_id==code).order_by(desc(HouseMeta.Entry.deal_time)).limit(10)
+        deals = db.session.query(HouseMeta).filter(HouseMeta.community_id==code).order_by(desc(HouseMeta.deal_time)).limit(limit_num)
 
         recent_deals = []
         for deal in deals:
