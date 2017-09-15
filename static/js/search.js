@@ -1,28 +1,28 @@
-$('.main_search').keyup(function (event) {
-	console.log(event.target.value);
-	// ajax
+// $('.main_search').keyup(function (event) {
+// 	console.log(event.target.value);
+// 	// ajax
 
-	// function (data) {
-		let communities = [{community_name: '小区', community_id: '000088'}]
-		let lists = '';
-		for(let i = 0; i < communities.length; i++) {
-			let li = `
-				<li>
-					<span class="search_result_1">${ communities[i].community_name }</span>
-					<span class="search_result_2">${ communities[i].community_id }</span>
-				</li>
-			`;
-			lists += li;
-		}
+// 	// function (data) {
+// 		let communities = [{community_name: '小区', community_id: '000088'}]
+// 		let lists = '';
+// 		for(let i = 0; i < communities.length; i++) {
+// 			let li = `
+// 				<li>
+// 					<span class="search_result_1">${ communities[i].community_name }</span>
+// 					<span class="search_result_2">${ communities[i].community_id }</span>
+// 				</li>
+// 			`;
+// 			lists += li;
+// 		}
 		
-		$('#search_result ul').html(lists);
-		$('#search_result').show();
-	// }
-});
+// 		$('#search_result ul').html(lists);
+// 		$('#search_result').show();
+// 	// }
+// });
 
-$('.main_search').click(function (event) {
-	$('#floatlayer').show();
-});
+// $('.main_search').click(function (event) {
+// 	$('#floatlayer').show();
+// });
 
 $('body').click(function(event){
 	if ($('#floatlayer').is(event.target)) {
