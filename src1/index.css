@@ -141,8 +141,8 @@ i[name=reset] {
 	width: 310px;
 	height: 40px;
 	padding: 0 1.2em;
-	border: 1px solid #9C9C9C;
-	border-radius: 16px;
+	border: 1px solid #fff;
+	border-radius: 10px;
 	outline: none;
 	color: #EFEFEF;
 	background-color: transparent;
@@ -170,6 +170,7 @@ i[name=reset] {
 .search_return10 {
 	width: 100%;
 	text-align: justify;
+	cursor: pointer;
 }
 .search_return10:after {
 	content: '';
@@ -183,7 +184,9 @@ i[name=reset] {
 .search_return12 {
 	float: left;
 }
-
+.typeahead {
+	color: #efefef;
+}
 
 
 
