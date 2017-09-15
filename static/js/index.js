@@ -28,8 +28,8 @@ console.log(document.getElementById('message').style.fontSize);
     var indicatorTop = d3.scaleLinear()
             .range([dim.indicator.top, dim.indicator.bottom]);
 
-    // var parseDate = d3.timeParse("%Y-%m-%d");
-    var parseDate = d3.timeParse("%Y-%m-%dT%H:%M:%S");
+    var parseDate = d3.timeParse("%Y-%m-%d");
+    // var parseDate = d3.timeParse("%Y-%m-%dT%H:%M:%S");
 
     var zoom = d3.zoom()
             .on("zoom", zoomed);
@@ -332,15 +332,16 @@ console.log(document.getElementById('message').style.fontSize);
             }
         });
     }
-    doFetchData();
+    // doFetchData();
 
-    // d3.csv("../bj_month_k_chart1.csv", csvData);
+    d3.csv("../bj_month_k_chart1.csv", csvData);
+
     function csvData (error, data) {
         var accessor = candlestick.accessor(),
             indicatorPreRoll = 33;  // Don't show where indicators don't have data
 
         // symbol = data[0].name;
-        
+
         data = data.map(function(d) {
             return {
                 date: parseDate(d.date),
