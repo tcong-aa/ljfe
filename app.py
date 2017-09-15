@@ -12,11 +12,14 @@ sys.setdefaultencoding('utf-8')
 logger = logging.getLogger(__name__)
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__,
+            static_url_path='',
+            static_folder='static',
+            template_folder='templates')
     # app.config.from_object(settings)
     app.config.from_object('config')
 
-    db.init_app(app)
+    # db.init_app(app)
     app.db = db
 
     register_blueprints(app)
