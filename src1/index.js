@@ -316,16 +316,18 @@ console.log(document.getElementById('message').style.fontSize);
 
     d3.select("button").on("click", reset);
 
-    // $.ajax({
-    //     url: '/month_prices',
-    //     data: {
-    //         code: 1111027375142
-    //     },
-    //     success: function (data) {
-    //         data = data.prices;
-    //         csvData(null, data);
-    //     }
-    // });
+    function doFetchData (url) {
+        $.ajax({
+            url: url ? url : '/month_prices',
+            data: {
+                code: community_code
+            },
+            success: function (data) {
+                data = data.prices;
+                csvData(null, data);
+            }
+        });
+    }
 
     d3.csv("./data/test1.csv", csvData);
     function csvData (error, data) {
