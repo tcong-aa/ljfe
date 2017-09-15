@@ -21,11 +21,17 @@ $('.main_search').keyup(function (event) {
 });
 
 $('.main_search').click(function (event) {
-	$(this).addClass('main_search_hover');
+	$('#floatlayer').show();
 });
 
+$('body').click(function(event){
+	if ($('#floatlayer').is(event.target)) {
+		$('#floatlayer').hide();
+	}
+})
+
 $('.typeahead.tt-input').focus(function (event) {
-	alert('w')
+	alert('w');
 	$('.typeahead.tt-input').addClass('twitter-typeahead_hover');
 });
 
