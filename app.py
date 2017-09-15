@@ -11,16 +11,17 @@ sys.setdefaultencoding('utf-8')
 
 logger = logging.getLogger(__name__)
 
+
 def create_app():
     app = Flask(__name__,
-            static_url_path='',
-            static_folder='static',
-            template_folder='templates')
+                static_url_path='',
+                static_folder='static',
+                template_folder='templates')
     # app.config.from_object(settings)
     app.config.from_object('config')
 
-    db.init_app(app)
-    app.db = db
+    # db.init_app(app)
+    # app.db = db
 
     register_blueprints(app)
     # register_extensions(app)
@@ -42,9 +43,10 @@ def register_blueprints(app):
         if not limit_num:
             limit_num = 10
 
-        community = db.session.query(CommunityMeta).filter(CommunityMeta.id==code).first()
+        community = db.session.query(CommunityMeta).filter(CommunityMeta.id == code).first()
 
-        deals = db.session.query(HouseMeta).filter(HouseMeta.community_id==code).order_by(desc(HouseMeta.deal_time)).limit(limit_num)
+        deals = db.session.query(HouseMeta).filter(HouseMeta.community_id == code).order_by(
+            desc(HouseMeta.deal_time)).limit(limit_num)
 
         recent_deals = []
         for deal in deals:
@@ -68,16 +70,27 @@ def register_blueprints(app):
             "recent_deals": recent_deals
         })
 
-
     @app.route('/proxy')
     def proxy():
 
-        import requests
+        import requests, json
 
-        r = requests.get('http://52.23.237.85:8080/week_prices?code=1111027375142')
+        r = requests.get('http://52.23.237.85:8080/search?text=%E7%82%AB%E7%89%B9')
 
-        return r.text
+        r1 = {
+            "rows": [{
+                "address": "shifoying xuantejiayuan",
+                "bizcircle_name": "shiw=foying",
+                "build_type": "",
+                "build_year": "2005-2007",
+                "code": "1111027381238",
+                "district_name": "chaoyang",
+                "favorite_count": "2518",
+                "name": "xuantejiayuan"
+            }]
+        }
 
+        return json.dumps(r1)
 
     @app.route('/search')
     def search():
@@ -106,7 +119,7 @@ def register_blueprints(app):
 
         code = request.args.get('code')
 
-        month_prices = db.session.query(MonthPrice).filter(MonthPrice.community_code==code).all()
+        month_prices = db.session.query(MonthPrice).filter(MonthPrice.community_code == code).all()
 
         prices_rows = []
 
@@ -130,7 +143,7 @@ def register_blueprints(app):
 
         code = request.args.get('code')
 
-        week_prices = db.session.query(WeekPrice).filter(WeekPrice.community_code==code).all()
+        week_prices = db.session.query(WeekPrice).filter(WeekPrice.community_code == code).all()
 
         prices_rows = []
 
@@ -152,5 +165,6 @@ def register_blueprints(app):
     @app.errorhandler(404)
     def not_found(error):
         return make_response(jsonify({'error': 'Not found'}), 404)
+
 
 app = create_app()

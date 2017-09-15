@@ -196,15 +196,12 @@
         <script src="js/d3.v4.min.js"></script>
         <script src="js/techan.min.js"></script>
 
-
-
         <script src="js/index.js"></script>
         <script>
             $(document).ready(function(){
                 console.log(community_code);
                 $.ajax({
-                    url: '/proxy',
-                    // http://52.23.237.85:8080/community?code=1111027375142&limit=11
+                    url: '/community',
                     data: {
                         code: community_code
                     },
@@ -241,71 +238,13 @@
                 });
             });
         </script>
-        <script src="js/search.js"></script>
 
 <script src="js/typeahead.js"></script>
 <script src="js/hb.js"></script>
+<script src="js/search.js"></script>
 <script>
-    var substringMatcher = function(strs) {
-      return function findMatches(q, cb) {
-        // var matches, substringRegex;
 
-        // // an array that will be populated with substring matches
-        // matches = [];
 
-        // // regex used to determine if a string contains the substring `q`
-        // substrRegex = new RegExp(q, 'i');
-
-        // // iterate through the pool of strings and for any string that
-        // // contains the substring `q`, add it to the `matches` array
-        // $.each(strs, function(i, str) {
-        //   if (substrRegex.test(str)) {
-        //     matches.push(str);
-        //   }
-        // });
-
-        // cb(matches);
-        cb(strs);
-      };
-    };
-
-    // $.ajax({
-    //     url: '/proxy',
-    //     data: {
-    //         code: community_code
-    //     },
-    //     success: function (data) {
-    //         var communities = data.rows.map(function(item){
-    //             // return '' + item.name + '<span class="search_return11">' + item.district_name + '</span><span class="search_return11">' + item.bizcircle_name + '</span>';
-    //             return {
-    //                 name: item.name,
-    //                 district_name: item.district_name,
-    //                 bizcircle_name: item.bizcircle_name
-    //             }
-    //         });
-
-    //         $('#the-basics .typeahead').typeahead({
-    //           hint: true,
-    //           highlight: true,
-    //           minLength: 1,
-    //         },
-    //         {
-    //           name: 'states',
-    //           source: substringMatcher(communities),
-    //           display: 'value',
-    //           templates: {
-    //             empty: [
-    //               '<div class="empty-message">',
-    //                 'unable to find any Best Picture winners that match the current query',
-    //               '</div>'
-    //             ].join('\n'),
-    //             suggestion: Handlebars.compile('<div class="search_return10"><span class="search_return12">{{name}}</span><span class="search_return11">{{ bizcircle_name }}</span><span class="search_return11">{{district_name}}</span></div>')
-    //           }
-    //         });
-    //     }
-    // });
-
-    
 </script>
 <script src="js/chart.js"></script>
     </body>

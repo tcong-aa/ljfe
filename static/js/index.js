@@ -29,7 +29,7 @@ console.log(document.getElementById('message').style.fontSize);
             .range([dim.indicator.top, dim.indicator.bottom]);
 
     // var parseDate = d3.timeParse("%Y-%m-%d");
-    var parseDate = d3.timeParse("%Y-%m-%dT%H:%M:%S");
+    var parseDate = d3.timeParse("%Y-%m-%d");
 
     var zoom = d3.zoom()
             .on("zoom", zoomed);
@@ -322,7 +322,7 @@ console.log(document.getElementById('message').style.fontSize);
             // url: url ? url : '/month_prices',
             url: '/proxy',
             data: {
-                code: community_code
+                // code: community_code
             },
             dataType: 'json',
             success: function (data) {
@@ -340,7 +340,7 @@ console.log(document.getElementById('message').style.fontSize);
             indicatorPreRoll = 33;  // Don't show where indicators don't have data
 
         // symbol = data[0].name;
-        
+ 
         data = data.map(function(d) {
             return {
                 date: parseDate(d.date),
