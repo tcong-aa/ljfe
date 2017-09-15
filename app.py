@@ -31,7 +31,7 @@ def register_blueprints(app):
         return render_template('index.html', title='Hommy Candle Stick')
 
     @app.route('/month_prices')
-    def week_by_code():
+    def month_prices():
 
         code = request.args.get('code')
 
@@ -54,7 +54,7 @@ def register_blueprints(app):
         })
 
     @app.route('/week_prices')
-    def week_by_code():
+    def week_prices():
 
         code = request.args.get('code')
 
