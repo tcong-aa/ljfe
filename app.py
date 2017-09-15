@@ -46,6 +46,27 @@ def register_blueprints(app):
             "build_type": community.build_type
         })
 
+    @app.route('/search')
+    def search():
+        input_text = request.args.get('text')
+        communities = db.session.query(CommunityMeta).filter(CommunityMeta.name.like("%{}%".format(input_text))).all()
+        rows = []
+
+        for community in communities:
+            rows.append({
+                "code": community.id,
+                "name": community.name,
+                "district_name": community.district_name,
+                "bizcircle_name": community.bizcircle_name,
+                "address": community.address,
+                "favorite_count": community.favorite_count,
+                "build_year": community.build_year,
+                "build_type": community.build_type
+            })
+
+        return jsonify({
+            "rows": rows
+        })
 
     @app.route('/month_prices')
     def month_prices():
