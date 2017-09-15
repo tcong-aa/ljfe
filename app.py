@@ -2,6 +2,7 @@ from flask import Flask, jsonify, make_response
 from flask import render_template, request
 from extensions import db
 from week_data_converter.converter import WeekPrice, MonthPrice, CommunityMeta, HouseMeta
+from sqlalchemy import desc
 import logging
 import sys
 
@@ -36,6 +37,18 @@ def register_blueprints(app):
         code = request.args.get('code')
         community = db.session.query(CommunityMeta).filter(CommunityMeta.id==code).first()
 
+        deals = db.session.query(HouseMeta).filter(HouseMeta.community_id==code).order_by(desc(HouseMeta.Entry.deal_time)).limit(10)
+
+        recent_deals = []
+        for deal in deals:
+            recent_deals.append({
+                "deal_time": deal.deal_time,
+                "unit_price": deal.unit_price,
+                "community_name": deal.community_name,
+                "area": deal.area,
+                "price": deal.price
+            })
+
         return jsonify({
             "code": community.id,
             "name": community.name,
@@ -44,7 +57,8 @@ def register_blueprints(app):
             "address": community.address,
             "favorite_count": community.favorite_count,
             "build_year": community.build_year,
-            "build_type": community.build_type
+            "build_type": community.build_type,
+            "recent_deals": recent_deals
         })
 
     @app.route('/search')
