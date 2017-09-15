@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./index.css">
+<link rel="stylesheet" href="./chart.css">
+<link rel="stylesheet" href="./small.css" media="(max-width: 1260px)">
+<style>
+	.color_up {
+		color: #E44F47;
+	}
+	.color_down {
+		color: #3BBA97;
+	}
+</style>
+<style>
+#floatlayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 45px 0 0 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+}
+#loading {
+    display: none;
+    position: absolute;
+    top: 49%;
+    left: 49%;
+    animation-fill-mode: both;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 1px solid #ffffff;
+    animation: square-spin 3s 0s cubic-bezier(.09, .57, .49, .9) infinite;
+}
+
+@keyframes square-spin {
+    25% {
+        -webkit-transform: perspective(100px) rotateX(180deg) rotateY(0);
+        transform: perspective(100px) rotateX(180deg) rotateY(0);
+    }
+    50% {
+        -webkit-transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+        transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+    }
+    75% {
+        -webkit-transform: perspective(100px) rotateX(0) rotateY(180deg);
+        transform: perspective(100px) rotateX(0) rotateY(180deg);
+    }
+    100% {
+        -webkit-transform: perspective(100px) rotateX(0) rotateY(0);
+        transform: perspective(100px) rotateX(0) rotateY(0);
+    }
+}
+
+</style>
+<script>
+    var community_code = Number(window.location.search.slice(1).split('=')[1]);
+</script>
+</head>
+<body>
+    <div id="floatlayer">
+        <div id="the-basics">
+            <input class="typeahead" type="text" placeholder="States of USA">
+        </div>
+    </div>
+	<header>
+        <div id="title">
+		  <h1>Hommy</h1>
+          <div id="subtitle">小区详情</div>  
+        </div>
+        <!--  <div id="navigation"> -->
+        </div>
+        <div id="search">
+            <input type="text" class="main_search">
+            <i name="search"></i>
+            <i name="reset"></i>
+            <div id="search_result">
+                <ul>
+                    <li><span class="search_result_1">华润威海湾九里</span><span class="search_result_2">000080</span></li><li><span class="search_result_1">华润威海湾九里</span><span class="search_result_2">000080</span></li><li><span class="search_result_1">华润威海湾九里</span><span class="search_result_2">000080</span></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+	</header>
+    <section id="main">
+    	<section id="section_main">
+            <div id="chart_tools">
+                <div class="chart_tools_chart_type chart_tools_chart_type_now">Week</div>
+                <div class="chart_tools_chart_type">Month</div>
+            </div>
+            <div id="main_chart">
+                <div id="loading"></div>
+            </div>
+            <div id="legend">
+                <div class="legend_item">
+                    <span class="legend_item_block ma_block"></span>
+                    <span class="legend_item_type ma">MA10</span>
+                </div>
+                <div class="legend_item">
+                    <span class="legend_item_block ma1_block"></span>
+                    <span class="legend_item_type ma1">MA20</span>
+                </div>
+                <div class="legend_item">
+                    <span class="legend_item_block ema_block"></span>
+                    <span class="legend_item_type ema">MA50</span>
+                </div>
+                <div class="legend_item">
+                    <span class="legend_item_block volume_block"></span>
+                    <span class="legend_item_type volume">VOLUME</span>
+                </div>
+                <div class="legend_item">
+                    <span class="legend_item_block macd_block"></span>
+                    <span class="legend_item_type macd">MACD</span>
+                </div>
+                <div class="legend_item">
+                    <span class="legend_item_block macd1_block"></span>
+                    <span class="legend_item_type macd1">MACD1</span>
+                </div>
+                <div id="chart_tools1">
+                    <div class="chart_tools1_chart_type chart1_tools_chart_type_now">Week</div>
+                    <div class="chart_tools1_chart_type">Month</div>
+                </div>
+            </div>
+    	</section>
+
+        <div id="message">
+        	<aside>
+        		<div>
+        			<h2 name="name">望海风情海岸</h2>
+        			<span class="message_code" name="code">000073</span>
+        		</div>
+        		<div class="message_price">
+                    <span class="message_price_1 color_up">8800.73</span>
+                    <!-- <span class="priceup_arrow"></span> -->
+        			<span class="pricedown_arrow"></span>
+        			<span class="message_price_2 color_up">+ 13.31%</span>
+        			<span class="message_price_1"></span>
+        		</div>
+        		<div id="message_main">
+                    <span class="message_main_1" name="district_name">环翠区</span>
+        			<span class="message_main_1" name="bizcircle_name">幸福门</span>
+        			<span class="message_main_1" name="build_year">2012年</span>
+        			<span class="message_main_1">6600户</span>
+        		</div>
+        		<div class="message_chengjiao">
+        			<table id="message_chengjiao_set">
+        				<thead>
+        					<tr class="message_chengjiao_card">
+        						<th class="message_chengjiao_card_1" width="25%">均价</th>
+        						<th class="message_chengjiao_card_2" width="20%">面积</th>
+        						<th class="message_chengjiao_card_2" width="20%">总价</th>
+        						<th class="message_chengjiao_card_2">成交时间</th>
+        					</tr>
+        				</thead>
+        				<tbody>
+        					<tr class="message_chengjiao_card">
+        						<td class="message_chengjiao_card_1 color_down" width="25%">8600.00元</td>
+        						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+        						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+        						<td class="message_chengjiao_card_2">2013-03-01</td>
+        					</tr>
+        					<tr class="message_chengjiao_card">
+        						<td class="message_chengjiao_card_1 color_up" width="25%">8900.80元</td>
+        						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+        						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+        						<td class="message_chengjiao_card_2">2013-03-01</td>
+        					</tr>
+        					<tr class="message_chengjiao_card">
+        						<td class="message_chengjiao_card_1 color_up" width="25%">7900.80元</td>
+        						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+        						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+        						<td class="message_chengjiao_card_2">2013-03-01</td>
+        					</tr>
+        					<tr class="message_chengjiao_card">
+                                <td class="message_chengjiao_card_1 color_down" width="25%">7600.80元</td>
+                                <td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+                                <td class="message_chengjiao_card_2" width="20%">124.6万</td>
+                                <td class="message_chengjiao_card_2">2013-03-01</td>
+                            </tr>
+                            <tr class="message_chengjiao_card">
+        						<td class="message_chengjiao_card_1 color_down" width="25%">7600.80元</td>
+        						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
+        						<td class="message_chengjiao_card_2" width="20%">124.6万</td>
+        						<td class="message_chengjiao_card_2">2013-03-01</td>
+        					</tr>
+        				</tbody>
+        			</table>
+        		</div>
+        	</aside>
+        </div>
+     </section>
+        <script src="./jquery-1.11.3.js"></script>
+        <script src="./d3.v4.min.js"></script>
+        <script src="./techan.min.js"></script>
+
+
+
+        <script src="./index.js"></script>
+        <script>
+            $(document).ready(function(){
+                console.log(community_code);
+                $.ajax({
+                    url: 'http://52.23.237.85:8080/community',
+                    data: {
+                        code: community_code
+                    },
+                    success: function (data) {
+                        for(var i in data) {
+                            $('#message').find('[name='+ i +']').text(unescape(data[i]));
+                        }
+                    }
+                });
+            });
+        </script>
+        <script src="./search.js"></script>
+
+<script src="typeahead.js"></script>
+<script src="hb.js"></script>
+<script>
+    var substringMatcher = function(strs) {
+      return function findMatches(q, cb) {
+        // var matches, substringRegex;
+
+        // // an array that will be populated with substring matches
+        // matches = [];
+
+        // // regex used to determine if a string contains the substring `q`
+        // substrRegex = new RegExp(q, 'i');
+
+        // // iterate through the pool of strings and for any string that
+        // // contains the substring `q`, add it to the `matches` array
+        // $.each(strs, function(i, str) {
+        //   if (substrRegex.test(str)) {
+        //     matches.push(str);
+        //   }
+        // });
+
+        // cb(matches);
+        cb(strs);
+      };
+    };
+
+    var data = {
+rows: [
+{
+address: "石佛营-四至五环十里堡北区炫特嘉园",
+bizcircle_name: "石佛营",
+build_type: "",
+build_year: "2005-2007年",
+code: "1111027381238",
+district_name: "朝阳",
+favorite_count: "2518",
+name: "炫特嘉园三期"
+},
+{
+address: "石佛营-四至五环六里屯",
+bizcircle_name: "石佛营",
+build_type: "",
+build_year: "2004-2004年",
+code: "1111027381237",
+district_name: "朝阳",
+favorite_count: "1882",
+name: "炫特嘉园二期"
+},
+{
+address: "石佛营-四至五环六里屯",
+bizcircle_name: "石佛营",
+build_type: "",
+build_year: "2004-2004年",
+code: "1111027381239",
+district_name: "朝阳",
+favorite_count: "1867",
+name: "炫特嘉园一期"
+}
+]
+}
+
+    // $.ajax({
+    //     url: 'http://52.23.237.85:8080/community',
+    //     data: {
+    //         code: community_code
+    //     },
+    //     success: function (data) {
+            var communities = data.rows.map(function(item){
+                // return '' + item.name + '<span class="search_return11">' + item.district_name + '</span><span class="search_return11">' + item.bizcircle_name + '</span>';
+                return {
+                    name: item.name,
+                    district_name: item.district_name,
+                    bizcircle_name: item.bizcircle_name
+                }
+            });
+
+            $('#the-basics .typeahead').typeahead({
+              hint: true,
+              highlight: true,
+              minLength: 1,
+            },
+            {
+              name: 'states',
+              source: substringMatcher(communities),
+              display: 'value',
+              templates: {
+                empty: [
+                  '<div class="empty-message">',
+                    'unable to find any Best Picture winners that match the current query',
+                  '</div>'
+                ].join('\n'),
+                suggestion: Handlebars.compile('<div class="search_return10"><span class="search_return12">{{name}}</span><span class="search_return11">{{district_name}}</span><span class="search_return11">{{ bizcircle_name }}</span></div>')
+              }
+            });
+    //     }
+    // });
+
+    
+</script>
+    </body>
+</html>
