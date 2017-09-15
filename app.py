@@ -112,6 +112,7 @@ def register_blueprints(app):
 
         for month_price in month_prices:
             prices_rows.append({
+                "date": month_price.date,
                 "open": month_price.open,
                 "close": month_price.close,
                 "high": month_price.high,
@@ -135,6 +136,7 @@ def register_blueprints(app):
 
         for week_price in week_prices:
             prices_rows.append({
+                "date": week_price.date,
                 "open": week_price.open,
                 "close": week_price.close,
                 "high": week_price.high,
