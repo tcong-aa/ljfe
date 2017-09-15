@@ -4,7 +4,7 @@ from flask import render_template, request
 
 from extensions import db
 
-from week_data_converter.converter import WeekPrice, MonthPrice
+from week_data_converter.converter import WeekPrice, MonthPrice, CommunityMeta, HouseMeta
 
 import logging
 logger = logging.getLogger(__name__)
@@ -29,6 +29,23 @@ def register_blueprints(app):
     @app.route('/')
     def index():
         return render_template('index.html', title='Hommy Candle Stick')
+
+    @app.route('/community')
+    def community():
+        code = request.args.get('code')
+        community = db.session.query(CommunityMeta).filter(CommunityMeta.id==code).first()
+
+        return jsonify({
+            "code": community.id,
+            "name": community.name,
+            "district_name": community.district_name,
+            "bizcircle_name": community.bizcircle_name,
+            "address": community.address,
+            "favorite_count": community.favorite_count,
+            "build_year": community.build_year,
+            "build_type": community.build_type
+        })
+
 
     @app.route('/month_prices')
     def month_prices():

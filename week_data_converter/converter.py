@@ -55,6 +55,22 @@ class WeekPrice(db.Model):
             self.volumn
         )
 
+
+class CommunityMeta(db.Model):
+
+    __tablename__ = 'community_meta'
+
+    id = db.Column(db.Text, primary_key=True)
+
+    name = db.Column(db.Text)
+    district_name = db.Column(db.Text)
+    bizcircle_name = db.Column(db.Text)
+    address = db.Column(db.Text)
+    favorite_count = db.Column(db.Text)
+    build_year = db.Column(db.Text)
+    build_type = db.Column(db.Text)
+
+
 class HouseMeta(db.Model):
 
     __tablename__ = 'house_meta'
