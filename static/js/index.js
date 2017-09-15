@@ -28,7 +28,8 @@ console.log(document.getElementById('message').style.fontSize);
     var indicatorTop = d3.scaleLinear()
             .range([dim.indicator.top, dim.indicator.bottom]);
 
-    var parseDate = d3.timeParse("%Y-%m-%d");
+    // var parseDate = d3.timeParse("%Y-%m-%d");
+    var parseDate = d3.timeParse("%Y-%m-%dT%H:%M:%S");
 
     var zoom = d3.zoom()
             .on("zoom", zoomed);
@@ -97,7 +98,7 @@ console.log(document.getElementById('message').style.fontSize);
 
     var yAxis = d3.axisRight(y);
 
-    var symbol = "FackBook";
+    // var symbol = "FaceBook";
 
     var ohlcAnnotation = techan.plot.axisannotation()
             .axis(yAxis)
@@ -318,23 +319,27 @@ console.log(document.getElementById('message').style.fontSize);
 
     function doFetchData (url) {
         $.ajax({
-            url: url ? url : '/month_prices',
+            // url: url ? url : '/month_prices',
+            url: '/proxy',
             data: {
                 code: community_code
             },
+            dataType: 'json',
             success: function (data) {
+                console.log(data)
                 data = data.prices;
                 csvData(null, data);
             }
         });
     }
+    doFetchData();
 
-    d3.csv("../bj_month_k_chart.csv", csvData);
+    // d3.csv("../bj_month_k_chart1.csv", csvData);
     function csvData (error, data) {
         var accessor = candlestick.accessor(),
             indicatorPreRoll = 33;  // Don't show where indicators don't have data
 
-        symbol = data[0].name;
+        // symbol = data[0].name;
         
         data = data.map(function(d) {
             return {
@@ -354,20 +359,20 @@ console.log(document.getElementById('message').style.fontSize);
         yVolume.domain(techan.scale.plot.volume(data).domain());
 
         var trendlineData = [
-            { start: { date: new Date(2014, 2, 11), value: 72.50 }, end: { date: new Date(2014, 5, 9), value: 63.34 } },
-            { start: { date: new Date(2013, 10, 21), value: 43 }, end: { date: new Date(2014, 2, 17), value: 70.50 } }
+            // { start: { date: new Date(2014, 2, 11), value: 72.50 }, end: { date: new Date(2014, 5, 9), value: 63.34 } },
+            // { start: { date: new Date(2013, 10, 21), value: 43 }, end: { date: new Date(2014, 2, 17), value: 70.50 } }
         ];
 
         var supstanceData = [
-            { start: new Date(2014, 2, 11), end: new Date(2014, 5, 9), value: 63.64 },
-            { start: new Date(2013, 10, 21), end: new Date(2014, 2, 17), value: 55.50 }
+            // { start: new Date(2014, 2, 11), end: new Date(2014, 5, 9), value: 63.64 },
+            // { start: new Date(2013, 10, 21), end: new Date(2014, 2, 17), value: 55.50 }
         ];
 
         var trades = [
-            { date: data[30].date, type: "buy", price: data[30].low, low: data[30].low, high: data[30].high },
-            { date: data[60].date, type: "sell", price: data[60].high, low: data[60].low, high: data[60].high },
-            { date: data[90].date, type: "buy", price: data[90].low, low: data[90].low, high: data[90].high },
-            { date: data[120].date, type: "sell", price: data[120].low, low: data[120].low, high: data[120].high }
+            // { date: data[30].date, type: "buy", price: data[30].low, low: data[30].low, high: data[30].high },
+            // { date: data[60].date, type: "sell", price: data[60].high, low: data[60].low, high: data[60].high },
+            // { date: data[90].date, type: "buy", price: data[90].low, low: data[90].low, high: data[90].high },
+            // { date: data[120].date, type: "sell", price: data[120].low, low: data[120].low, high: data[120].high }
         ];
 
         var macdData = techan.indicator.macd()(data);

@@ -68,6 +68,17 @@ def register_blueprints(app):
             "recent_deals": recent_deals
         })
 
+
+    @app.route('/proxy')
+    def proxy():
+
+        import requests
+
+        r = requests.get('http://52.23.237.85:8080/week_prices?code=1111027375142')
+
+        return r.text
+
+
     @app.route('/search')
     def search():
         input_text = request.args.get('text')

@@ -98,6 +98,7 @@
                 <div id="loading"></div>
             </div>
             <div id="legend">
+                <div class="ememem"></div>
                 <div class="legend_item">
                     <span class="legend_item_block ma_block"></span>
                     <span class="legend_item_type ma">MA10</span>
@@ -122,10 +123,6 @@
                     <span class="legend_item_block macd1_block"></span>
                     <span class="legend_item_type macd1">MACD1</span>
                 </div>
-                <div id="chart_tools1">
-                    <div class="chart_tools1_chart_type chart1_tools_chart_type_now">Week</div>
-                    <div class="chart_tools1_chart_type">Month</div>
-                </div>
             </div>
     	</section>
 
@@ -146,7 +143,7 @@
                     <span class="message_main_1" name="district_name">环翠区</span>
         			<span class="message_main_1" name="bizcircle_name">幸福门</span>
         			<span class="message_main_1" name="build_year">2012年</span>
-        			<span class="message_main_1">6600户</span>
+        			<!-- <span class="message_main_1">6600户</span> -->
         		</div>
         		<div class="message_chengjiao">
         			<table id="message_chengjiao_set">
@@ -158,7 +155,7 @@
         						<th class="message_chengjiao_card_2">成交时间</th>
         					</tr>
         				</thead>
-        				<tbody>
+        				<tbody id="message_chengjiao_set_cardset">
         					<tr class="message_chengjiao_card">
         						<td class="message_chengjiao_card_1 color_down" width="25%">8600.00元</td>
         						<td class="message_chengjiao_card_2" width="20%">140m<sup>2</sup></td>
@@ -203,20 +200,46 @@
 
         <script src="js/index.js"></script>
         <script>
-            // $(document).ready(function(){
-            //     console.log(community_code);
-            //     $.ajax({
-            //         url: 'http://52.23.237.85:8080/community',
-            //         data: {
-            //             code: community_code
-            //         },
-            //         success: function (data) {
-            //             for(var i in data) {
-            //                 $('#message').find('[name='+ i +']').text(unescape(data[i]));
-            //             }
-            //         }
-            //     });
-            // });
+            $(document).ready(function(){
+                console.log(community_code);
+                $.ajax({
+                    url: '/proxy',
+                    // http://52.23.237.85:8080/community?code=1111027375142&limit=11
+                    data: {
+                        code: community_code
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        for(var i in data) {
+                            if (i == 'recent_deals') {
+                                var str = '';
+                                if (data.recent_deals.length >= 2) {}
+                                for(var j = 0; j < data.recent_deals.length - 1; j++) {
+                                    let color_class = '';
+                                    if (data.recent_deals[j].unit_price < data.recent_deals[j+1].unit_price) {
+                                        color_class = 'color_down';
+                                    }
+                                    else {
+                                        color_class = 'color_up';
+                                    }
+
+                                    let tr = `<tr class="message_chengjiao_card">
+                                        <td class="message_chengjiao_card_1 ${ color_class }" width="25%">${ data.recent_deals[j].unit_price }元</td>
+                                        <td class="message_chengjiao_card_2" width="20%">${ data.recent_deals[j].area }m<sup>2</sup></td>
+                                        <td class="message_chengjiao_card_2" width="20%">${ (data.recent_deals[j].price / 10000).toFixed(1) }万</td>
+                                        <td class="message_chengjiao_card_2">${ data.recent_deals[j].deal_time }</td>
+                                    </tr>`;
+                                    str += tr;
+                                }
+                                $('#message_chengjiao_set_cardset').html(str);
+                            }
+                            $('#message').find('[name='+ i +']').text(unescape(data[i]));
+                        }
+                        
+                        
+                    }
+                });
+            });
         </script>
         <script src="js/search.js"></script>
 
@@ -246,74 +269,39 @@
       };
     };
 
-    var data = {
-rows: [
-{
-address: "石佛营-四至五环十里堡北区炫特嘉园",
-bizcircle_name: "石佛营",
-build_type: "",
-build_year: "2005-2007年",
-code: "1111027381238",
-district_name: "朝阳",
-favorite_count: "2518",
-name: "炫特嘉园三期"
-},
-{
-address: "石佛营-四至五环六里屯",
-bizcircle_name: "石佛营",
-build_type: "",
-build_year: "2004-2004年",
-code: "1111027381237",
-district_name: "朝阳",
-favorite_count: "1882",
-name: "炫特嘉园二期"
-},
-{
-address: "石佛营-四至五环六里屯",
-bizcircle_name: "石佛营",
-build_type: "",
-build_year: "2004-2004年",
-code: "1111027381239",
-district_name: "朝阳",
-favorite_count: "1867",
-name: "炫特嘉园一期"
-}
-]
-}
-
     // $.ajax({
-    //     url: 'http://52.23.237.85:8080/community',
+    //     url: '/proxy',
     //     data: {
     //         code: community_code
     //     },
     //     success: function (data) {
-            var communities = data.rows.map(function(item){
-                // return '' + item.name + '<span class="search_return11">' + item.district_name + '</span><span class="search_return11">' + item.bizcircle_name + '</span>';
-                return {
-                    name: item.name,
-                    district_name: item.district_name,
-                    bizcircle_name: item.bizcircle_name
-                }
-            });
+    //         var communities = data.rows.map(function(item){
+    //             // return '' + item.name + '<span class="search_return11">' + item.district_name + '</span><span class="search_return11">' + item.bizcircle_name + '</span>';
+    //             return {
+    //                 name: item.name,
+    //                 district_name: item.district_name,
+    //                 bizcircle_name: item.bizcircle_name
+    //             }
+    //         });
 
-            $('#the-basics .typeahead').typeahead({
-              hint: true,
-              highlight: true,
-              minLength: 1,
-            },
-            {
-              name: 'states',
-              source: substringMatcher(communities),
-              display: 'value',
-              templates: {
-                empty: [
-                  '<div class="empty-message">',
-                    'unable to find any Best Picture winners that match the current query',
-                  '</div>'
-                ].join('\n'),
-                suggestion: Handlebars.compile('<div class="search_return10"><span class="search_return12">{{name}}</span><span class="search_return11">{{ bizcircle_name }}</span><span class="search_return11">{{district_name}}</span></div>')
-              }
-            });
+    //         $('#the-basics .typeahead').typeahead({
+    //           hint: true,
+    //           highlight: true,
+    //           minLength: 1,
+    //         },
+    //         {
+    //           name: 'states',
+    //           source: substringMatcher(communities),
+    //           display: 'value',
+    //           templates: {
+    //             empty: [
+    //               '<div class="empty-message">',
+    //                 'unable to find any Best Picture winners that match the current query',
+    //               '</div>'
+    //             ].join('\n'),
+    //             suggestion: Handlebars.compile('<div class="search_return10"><span class="search_return12">{{name}}</span><span class="search_return11">{{ bizcircle_name }}</span><span class="search_return11">{{district_name}}</span></div>')
+    //           }
+    //         });
     //     }
     // });
 

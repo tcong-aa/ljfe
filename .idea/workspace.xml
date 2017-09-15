@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db58cb2d-21da-4975-81fe-dbbd559f6e52" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/chart.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/chart.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/close.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/d3.v4.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/data.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/data/test1.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/hb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/jquery-1.11.3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/kchart.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/ljfe/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/pic/downarrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/pic/up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/reset.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/search.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/small.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/techan.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src1/typeahead.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/index.js" afterPath="$PROJECT_DIR$/static/js/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
     </list>
     <ignored path="fe.iws" />
@@ -70,8 +49,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+            <state relative-caret-position="688">
+              <caret line="76" column="33" lean-forward="false" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -563,8 +542,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        <state relative-caret-position="688">
+          <caret line="76" column="33" lean-forward="false" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
