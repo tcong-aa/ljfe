@@ -19,7 +19,7 @@ def create_app():
     # app.config.from_object(settings)
     app.config.from_object('config')
 
-    # db.init_app(app)
+    db.init_app(app)
     app.db = db
 
     register_blueprints(app)
