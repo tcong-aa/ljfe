@@ -71,7 +71,7 @@
 	<header>
         <div id="title">
 		  <h1>Hommy</h1>
-          <div id="subtitle">小区详情</div>  
+          <div id="subtitle">小区详情</div>
         </div>
         <!--  <div id="navigation"> -->
         </div>
@@ -203,7 +203,8 @@
             $(document).ready(function(){
                 console.log(community_code);
                 $.ajax({
-                    url: '/proxy',
+                    url: '/community?code=1111027375142&limit=11',
+                    // url: '/proxy',
                     // http://52.23.237.85:8080/community?code=1111027375142&limit=11
                     data: {
                         code: community_code
@@ -235,8 +236,8 @@
                             }
                             $('#message').find('[name='+ i +']').text(unescape(data[i]));
                         }
-                        
-                        
+
+
                     }
                 });
             });
@@ -305,7 +306,7 @@
     //     }
     // });
 
-    
+
 </script>
 <script src="js/chart.js"></script>
     </body>
