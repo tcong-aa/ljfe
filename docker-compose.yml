@@ -5,6 +5,11 @@ services:
     container_name: server
     volumes:
         - .:/code
-    command: python manage.py runserver -h 0.0.0.0 -p 5000
+    command: python manage.py runserver -h 0.0.0.0 -p 8080
     ports:
-        - "5000:5000"
+        - "8080:8080"
+
+networks:
+  default:
+      external:
+        name: redash_default

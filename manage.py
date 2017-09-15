@@ -10,5 +10,17 @@ def make_shell_context():
 
 manager.add_command("shell", Shell(make_context=make_shell_context))
 
+@manager.command
+def generate_week_values():
+    from week_data_converter.converter import save_to_db_month
+    save_to_db_month()
+
+@manager.command
+def create_tables():
+    from week_data_converter.converter import WeekPrice, MonthPrice
+    # WeekPrice.__table__.create(app.db.session.bind)
+    MonthPrice.__table__.create(app.db.session.bind)
+
+
 if __name__ == '__main__':
     manager.run()
