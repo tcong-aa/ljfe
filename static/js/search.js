@@ -20,6 +20,9 @@ $('#the-basics .typeahead').typeahead({
 	name: 'states',
 	async: true,
 	source: function(q, cb, process) {
+		
+		$('.loading').show();
+		
 		return $.get('search', {text: q}, function(data) {
 			var communities = data.rows.map(function(item) {
 				return {
@@ -29,6 +32,7 @@ $('#the-basics .typeahead').typeahead({
 					bizcircle_name: item.bizcircle_name,
 				}
 			});
+			$('.loading').hide();
 			return process(communities);
 		}, 'json');
 	},

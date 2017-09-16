@@ -327,6 +327,7 @@ console.log(document.getElementById('message').style.fontSize);
                 console.log(data)
                 data = data.prices;
                 csvData(null, data);
+                $('#loading').show();
             }
         });
     }
@@ -415,10 +416,12 @@ console.log(document.getElementById('message').style.fontSize);
         y.domain(d3.event.transform.rescaleY(yInit).domain());
         yPercent.domain(d3.event.transform.rescaleY(yPercentInit).domain());
 
-        draw();
+        draw(function(){
+            $('#loading').hide();
+        });
     }
 
-    function draw() {
+    function draw(callback) {
         svg.select("g.x.axis").call(xAxis);
         svg.select("g.ohlc .axis").call(yAxis);
         svg.select("g.volume.axis").call(volumeAxis);
@@ -443,4 +446,6 @@ console.log(document.getElementById('message').style.fontSize);
         svg.select("g.trendlines").call(trendline.refresh);
         svg.select("g.supstances").call(supstance.refresh);
         svg.select("g.tradearrow").call(tradearrow.refresh);
+
+        callback();
     }
