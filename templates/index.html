@@ -235,13 +235,13 @@
                                         rate = (last1 - last2) / last2;
                                         rate = (rate*100).toFixed(2) + '%';
                                     if (last1 > last2) {
-                                        $('[name=now_price]').addClass('color_up');
-                                        $('[name=now_rate]').addClass('color_up').html('+ ' + rate);
+                                        $('[name=now_price]').addClass('color_up').removeClass('color_down');
+                                        $('[name=now_rate]').addClass('color_up').removeClass('color_down').html('+ ' + rate);
                                         $('[name=arrow]').attr('class', 'priceup_arrow');
                                     }
                                     else {
-                                        $('[name=now_price]').addClass('color_down');
-                                        $('[name=now_rate]').addClass('color_down').html(rate);
+                                        $('[name=now_price]').addClass('color_down').removeClass('color_up');
+                                        $('[name=now_rate]').addClass('color_down').removeClass('color_up').html(rate);
                                         $('[name=arrow]').attr('class', 'pricedown_arrow');
                                     }
                                 }
