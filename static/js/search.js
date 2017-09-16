@@ -46,6 +46,6 @@ $('.tt-dataset').on('click', '.search_return10', function (event) {
 	community_code = $(this).attr('community_code');
 	loadPage();
 	doFetchData();
-	$('.chart_tools_chart_type_week').trigger('click');
+	$('.chart_tools_chart_type_month').trigger('click');
 	$('#floatlayer').hide();
 });
