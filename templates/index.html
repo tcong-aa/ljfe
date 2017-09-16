@@ -199,7 +199,9 @@
 
         <script src="js/index.js"></script>
         <script>
-            $(document).ready(function(){
+            $(document).ready(loadPage);
+            
+            function loadPage(){
                 console.log(community_code);
                 $.ajax({
                     url: '/community',
@@ -237,7 +239,7 @@
 
                     }
                 });
-            });
+            }
         </script>
 
 <script src="js/typeahead.js"></script>
