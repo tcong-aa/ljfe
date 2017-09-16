@@ -45,8 +45,15 @@ def register_blueprints(app):
 
         community = db.session.query(CommunityMeta).filter(CommunityMeta.id == code).first()
 
-        deals = db.session.query(HouseMeta).filter(HouseMeta.community_id == code).order_by(
-            desc(HouseMeta.deal_time)).limit(limit_num)
+        if code == '100000':
+
+            deals = db.session.query(HouseMeta).order_by(
+                desc(HouseMeta.deal_time)).limit(limit_num)
+
+        else:
+
+            deals = db.session.query(HouseMeta).filter(HouseMeta.community_id == code).order_by(
+                desc(HouseMeta.deal_time)).limit(limit_num)
 
         recent_deals = []
         for deal in deals:
