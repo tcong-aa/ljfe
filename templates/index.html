@@ -92,8 +92,8 @@
     <section id="main">
     	<section id="section_main">
             <div id="chart_tools">
-                <div class="chart_tools_chart_type chart_tools_chart_type_week chart_tools_chart_type_now">Week</div>
-                <div class="chart_tools_chart_type chart_tools_chart_type_month">Month</div>
+                <div class="chart_tools_chart_type chart_tools_chart_type_month chart_tools_chart_type_now">Month</div>
+                <div class="chart_tools_chart_type chart_tools_chart_type_week">Week</div>
             </div>
             <div id="main_chart">
                 <div id="loading"></div>
@@ -118,11 +118,11 @@
                 </div>
                 <div class="legend_item">
                     <span class="legend_item_block macd_block"></span>
-                    <span class="legend_item_type macd">MACD</span>
+                    <span class="legend_item_type macd">DIFF</span>
                 </div>
                 <div class="legend_item">
                     <span class="legend_item_block macd1_block"></span>
-                    <span class="legend_item_type macd1">MACD1</span>
+                    <span class="legend_item_type macd1">DEA</span>
                 </div>
             </div>
     	</section>
@@ -134,10 +134,10 @@
         			<span class="message_code" name="code">000073</span>
         		</div>
         		<div class="message_price">
-                    <span class="message_price_1 color_up">8800.73</span>
+                    <span class="message_price_1" name="now_price">8800.73</span>
                     <!-- <span class="priceup_arrow"></span> -->
         			<span class="pricedown_arrow"></span>
-        			<span class="message_price_2 color_up">+ 13.31%</span>
+        			<span class="message_price_2" name="now_rate">+ 13.31%</span>
         			<span class="message_price_1"></span>
         		</div>
         		<div id="message_main">
@@ -213,7 +213,21 @@
                         for(var i in data) {
                             if (i == 'recent_deals') {
                                 var str = '';
-                                if (data.recent_deals.length >= 2) {}
+                                $('[name=now_price]').html(data.recent_deals[0].unit_price);
+
+                                if (data.recent_deals.length >= 2) {
+                                    var last1 = data.recent_deals[0].unit_price,
+                                        last2 = data.recent_deals[1].unit_price,
+                                        rate = ((last1 - last2) / last2).toFixed(2);
+                                    if (last1 > last2) {
+                                        $('[name=now_price]').addClass('color_up');
+                                        $('[name=now_rate]').addClass('color_up').html('+ ' + rate);
+                                    }
+                                    else {
+                                        $('[name=now_price]').addClass('color_down');
+                                        $('[name=now_rate]').addClass('color_down').html(rate);
+                                    }
+                                }
                                 for(var j = 0; j < data.recent_deals.length - 1; j++) {
                                     let color_class = '';
                                     if (data.recent_deals[j].unit_price < data.recent_deals[j+1].unit_price) {
