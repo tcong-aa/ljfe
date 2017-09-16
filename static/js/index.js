@@ -248,8 +248,8 @@ console.log(document.getElementById('message').style.fontSize);
             .style("text-anchor", "end")
             .text("Price ($)");
 
-    ohlcSelection.append("g")
-            .attr("class", "close annotation up");
+    // ohlcSelection.append("g")
+    //         .attr("class", "close annotation up");
 
     ohlcSelection.append("g")
             .attr("class", "volume")
