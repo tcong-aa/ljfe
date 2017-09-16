@@ -32,14 +32,14 @@ header h1 {
 	line-height: 40px;
 	margin: 0 0;
 	vertical-align: super;
-	font-size: 40px;
+	font-size: 50px;
 	color: #DDDDDD;
 }
 #subtitle {
 	display: inline-block;
 	margin: 0 0 0 10px;
 	vertical-align: super;
-	font-size: 18px;
+	font-size: 20px;
 	color: #b1b1b1;
 }
 
@@ -142,8 +142,8 @@ i[name=reset] {
 
 .typeahead.tt-input {
 	box-sizing: border-box;
-	width: 310px;
-	height: 40px;
+	width: 460px;
+	height: 46px;
 	padding: 0 1.2em;
 	border: 1px solid #fff;
 	border-radius: 10px;
@@ -154,12 +154,12 @@ i[name=reset] {
 }
 .tt-suggestion.tt-selectable {
 	box-sizing: border-box;
-	width: 310px;
+	width: 460px;
 	height: 50px;
 	line-height: 50px;
 	padding: 0 24px;
 	margin: 2px 0 0 0;
-	font-size: 14px;
+	font-size: 20px;
 	color: #C0C0C0;
 	list-style: none;
 	background-color: #2B2B2B;
@@ -183,7 +183,7 @@ i[name=reset] {
 .search_return11 {
 	float: right;
 	padding: 0 10px;
-	font-size: 10px;
+	font-size: 16px;
 }
 .search_return12 {
 	float: left;
@@ -215,13 +215,13 @@ aside {
 }
 aside h2 {
 	display: inline-block;
-	font-size: 4em;
+	font-size: 6em;
 	color: #DFDFDF;
 	margin: 0;
 }
 .message_code {
 	margin: 0 0 0 1em;
-	font-size: 2.2em;
+	font-size: 3em;
 	color: #9F9F9F;
 }
 .message_price {
@@ -229,11 +229,11 @@ aside h2 {
 	align-items: center;
 }
 .message_price_1 {
-	font-size: 3em;
+	font-size: 4em;
 	color: #E44F47;
 }
 .message_price_2 {
-	font-size: 1.8em;
+	font-size: 3em;
 	vertical-align: super;
 }
 
@@ -250,7 +250,7 @@ aside h2 {
 	min-width: 27em;
 	padding: 0 1em;
 	border-radius: 4px;
-	font-size: 1.4em;
+	font-size: 2em;
 	background-color: #2B2B2B;
 	transition: all 0.2s;
 }
@@ -269,9 +269,9 @@ aside h2 {
 }
 
 aside #message_main {
-	padding: 0 0 1em 0;
+	padding: 0 0 0.5em 0;
 	border-bottom: 1px solid #9F9F9F;
-	font-size: 2em;
+	font-size: 3em;
 	color: #9F9F9F;
 }
 
