@@ -248,8 +248,8 @@ console.log(document.getElementById('message').style.fontSize);
             .style("text-anchor", "end")
             .text("Price ($)");
 
-    ohlcSelection.append("g")
-            .attr("class", "close annotation up");
+    // ohlcSelection.append("g")
+    //         .attr("class", "close annotation up");
 
     ohlcSelection.append("g")
             .attr("class", "volume")
@@ -326,6 +326,8 @@ console.log(document.getElementById('message').style.fontSize);
             success: function (data) {
                 console.log(data)
                 data = data.prices;
+
+                $('#loading').show();
                 csvData(null, data);
             }
         });
@@ -401,7 +403,9 @@ console.log(document.getElementById('message').style.fontSize);
         yInit = y.copy();
         yPercentInit = yPercent.copy();
 
-        draw();
+        draw(function(){
+            $('#loading').hide();
+        });
     }
 
     function reset() {
@@ -414,11 +418,10 @@ console.log(document.getElementById('message').style.fontSize);
         x.zoomable().domain(d3.event.transform.rescaleX(zoomableInit).domain());
         y.domain(d3.event.transform.rescaleY(yInit).domain());
         yPercent.domain(d3.event.transform.rescaleY(yPercentInit).domain());
-
         draw();
     }
 
-    function draw() {
+    function draw(callback) {
         svg.select("g.x.axis").call(xAxis);
         svg.select("g.ohlc .axis").call(yAxis);
         svg.select("g.volume.axis").call(volumeAxis);
@@ -443,4 +446,6 @@ console.log(document.getElementById('message').style.fontSize);
         svg.select("g.trendlines").call(trendline.refresh);
         svg.select("g.supstances").call(supstance.refresh);
         svg.select("g.tradearrow").call(tradearrow.refresh);
+
+        callback();
     }
