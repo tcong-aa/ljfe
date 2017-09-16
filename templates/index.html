@@ -220,7 +220,8 @@
                 $.ajax({
                     url: '/community',
                     data: {
-                        code: community_code
+                        code: community_code,
+                        limit: 12
                     },
                     dataType: 'json',
                     success: function (data) {
