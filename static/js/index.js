@@ -318,10 +318,9 @@ console.log(document.getElementById('message').style.fontSize);
 
     function doFetchData (url) {
         $.ajax({
-            // url: url ? url : '/month_prices',
-            url: '/proxy',
+            url: url ? url : '/month_prices',
             data: {
-                // code: community_code
+                code: community_code
             },
             dataType: 'json',
             success: function (data) {
@@ -331,9 +330,9 @@ console.log(document.getElementById('message').style.fontSize);
             }
         });
     }
-    // doFetchData();
+    doFetchData();
 
-    d3.csv("../bj_month_k_chart1.csv", csvData);
+    // d3.csv("../bj_month_k_chart1.csv", csvData);
 
     function csvData (error, data) {
         var accessor = candlestick.accessor(),

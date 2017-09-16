@@ -23,9 +23,10 @@ $('#the-basics .typeahead').typeahead({
 		return $.get('/proxy', {}, function(data) {
 			var communities = data.rows.map(function(item) {
 				return {
+					code: item.code,
 					name: item.name,
 					district_name: item.district_name,
-					bizcircle_name: item.bizcircle_name
+					bizcircle_name: item.bizcircle_name,
 				}
 			});
 			return process(communities);
@@ -37,6 +38,14 @@ $('#the-basics .typeahead').typeahead({
 			'unable to find any Best Picture winners that match the current query',
 			'</div>'
 		].join('\n'),
-		suggestion: Handlebars.compile('<div class="search_return10"><span class="search_return12">{{ name }}</span><span class="search_return11">{{ bizcircle_name }}</span><span class="search_return11">{{ district_name }}</span></div>')
+		suggestion: Handlebars.compile('<div class="search_return10" community_code="{{ code }}"><span class="search_return12">{{ name }}</span><span class="search_return11">{{ bizcircle_name }}</span><span class="search_return11">{{ district_name }}</span></div>')
 	}
+});
+
+$('.tt-dataset').on('click', '.search_return10', function (event) {
+	community_code = $(this).attr('community_code');
+	loadPage();
+	doFetchData();
+	$('.chart_tools_chart_type_week').trigger('click');
+	$('#floatlayer').hide();
 });
