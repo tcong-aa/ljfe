@@ -5,8 +5,8 @@ services:
     container_name: server
     volumes:
         - .:/code
-    command: python manage.py runserver -h 0.0.0.0 -p 8080
-    # command: gunicorn -c gunicorn_config.py manage:app
+    # command: python manage.py runserver -h 0.0.0.0 -p 8080
+    command: gunicorn -c gunicorn_config.py manage:app
     ports:
         - "8080:8080"
 

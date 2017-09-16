@@ -20,8 +20,8 @@ def create_app():
     # app.config.from_object(settings)
     app.config.from_object('config')
 
-    # db.init_app(app)
-    # app.db = db
+    db.init_app(app)
+    app.db = db
 
     register_blueprints(app)
     # register_extensions(app)
@@ -90,7 +90,7 @@ def register_blueprints(app):
             }]
         }
 
-        return json.dumps(r1)
+        return json.dumps(r.json())
 
     @app.route('/search')
     def search():
