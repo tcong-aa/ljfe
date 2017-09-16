@@ -226,6 +226,12 @@
                     dataType: 'json',
                     success: function (data) {
                         for(var i in data) {
+                            if (community_code == 100000) {
+                                if (i == 'district_name') {
+
+                                }
+                            }
+
                             if (i == 'recent_deals') {
                                 var str = '';
                                 $('[name=now_price]').html(data.recent_deals[0].unit_price);
@@ -265,7 +271,22 @@
                                 }
                                 $('#message_chengjiao_set_cardset').html(str);
                             }
-                            $('#message').find('[name='+ i +']').text(unescape(data[i]));
+
+                            if (community_code == 100000) {
+                                if (i == 'district_name') {
+                                    $('#message').find('[name='+ i +']').text('北京市');
+                                }
+                                else if (i == 'bizcircle_name') {
+                                    $('#message').find('[name='+ i +']').text('北京');
+                                }
+                                else if (i == 'build_year') {
+                                    $('#message').find('[name='+ i +']').text('');
+                                }
+                            }
+                            else {
+                                $('#message').find('[name='+ i +']').text(unescape(data[i]));
+                            }
+
                         }
 
 
