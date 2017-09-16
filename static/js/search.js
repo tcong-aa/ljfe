@@ -20,7 +20,7 @@ $('#the-basics .typeahead').typeahead({
 	name: 'states',
 	async: true,
 	source: function(q, cb, process) {
-		return $.get('/proxy', {}, function(data) {
+		return $.get('search', {text: q}, function(data) {
 			var communities = data.rows.map(function(item) {
 				return {
 					code: item.code,
@@ -46,6 +46,6 @@ $('.tt-dataset').on('click', '.search_return10', function (event) {
 	community_code = $(this).attr('community_code');
 	loadPage();
 	doFetchData();
-	$('.chart_tools_chart_type_week').trigger('click');
+	$('.chart_tools_chart_type_month').trigger('click');
 	$('#floatlayer').hide();
 });

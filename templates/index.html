@@ -136,7 +136,7 @@
         		<div class="message_price">
                     <span class="message_price_1" name="now_price">8800.73</span>
                     <!-- <span class="priceup_arrow"></span> -->
-        			<span class="pricedown_arrow"></span>
+        			<span name="arrow"></span>
         			<span class="message_price_2" name="now_rate">+ 13.31%</span>
         			<span class="message_price_1"></span>
         		</div>
@@ -218,14 +218,17 @@
                                 if (data.recent_deals.length >= 2) {
                                     var last1 = data.recent_deals[0].unit_price,
                                         last2 = data.recent_deals[1].unit_price,
-                                        rate = ((last1 - last2) / last2).toFixed(2);
+                                        rate = (last1 - last2) / last2;
+                                        rate = (rate*100).toFixed(2) + '%';
                                     if (last1 > last2) {
                                         $('[name=now_price]').addClass('color_up');
                                         $('[name=now_rate]').addClass('color_up').html('+ ' + rate);
+                                        $('[name=arrow]').attr('class', 'priceup_arrow');
                                     }
                                     else {
                                         $('[name=now_price]').addClass('color_down');
                                         $('[name=now_rate]').addClass('color_down').html(rate);
+                                        $('[name=arrow]').attr('class', 'pricedown_arrow');
                                     }
                                 }
                                 for(var j = 0; j < data.recent_deals.length - 1; j++) {
