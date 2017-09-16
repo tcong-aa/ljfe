@@ -20,7 +20,7 @@ $('#the-basics .typeahead').typeahead({
 	name: 'states',
 	async: true,
 	source: function(q, cb, process) {
-		return $.get('/proxy', {}, function(data) {
+		return $.get('search', {text: q}, function(data) {
 			var communities = data.rows.map(function(item) {
 				return {
 					code: item.code,
