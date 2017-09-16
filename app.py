@@ -119,10 +119,7 @@ def register_blueprints(app):
 
         code = request.args.get('code')
 
-        if code == '100000':
-            month_prices = db.session.query(MonthPrice).all()
-        else:
-            month_prices = db.session.query(MonthPrice).filter(MonthPrice.community_code == code).all()
+        month_prices = db.session.query(MonthPrice).filter(MonthPrice.community_code == code).all()
 
         prices_rows = []
 
@@ -146,10 +143,7 @@ def register_blueprints(app):
 
         code = request.args.get('code')
 
-        if code == '100000':
-            week_prices = db.session.query(WeekPrice).all()
-        else:
-            week_prices = db.session.query(WeekPrice).filter(WeekPrice.community_code == code).all()
+        week_prices = db.session.query(WeekPrice).filter(WeekPrice.community_code == code).all()
 
         prices_rows = []
 
