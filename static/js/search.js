@@ -1,5 +1,6 @@
 $('.main_search').click(function(event) {
 	$('#floatlayer').show();
+	$(".typeahead.tt-input").val("").focus();
 });
 
 $('body').click(function(event) {
